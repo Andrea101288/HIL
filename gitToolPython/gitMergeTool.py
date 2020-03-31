@@ -17,15 +17,20 @@ class Git_update:
 			quit()			
 		# try to pull from remote feature branch, if the remote branch doesn't exist yet skip this step
 		try:
-			repo.git.pull('origin', current)
+			repo.git.pull('origin', current)			
 		except:
 			pass
+		
+		for submodule in repo.submodules:
+			submodule.update(init=True)
 
 		# get Main branch 
 		if main_branch in repo.branches:
 			main = repo.branches[main_branch]
 			# git pull from remote main branch
 			repo.git.pull('origin', main)
+			for submodule in repo.submodules:
+				submodule.update(init=True)
 			# find the merge base of these two branches
 			base = repo.merge_base(current, main)
 			# stage a merge operation
@@ -44,6 +49,7 @@ class Git_update:
 				repo.git.push('--set-upstream', 'origin', current)
 		else:
 			print(main_branch+"doesn't exist")	
+			quit()
 
 # Main function					
 if __name__ == "__main__":
@@ -54,10 +60,9 @@ if __name__ == "__main__":
 		# call the funcion
 		Gitool.update_and_merge(repo, "DET_develop", "develop")
 		print("Update branch develop merged into DET_develop")
-		# merge my_new_branch in every feature branch you have 
+		# merge DET_develop in every feature branch you have 
 		for branch in feature_branches:
 			Gitool.update_and_merge(repo, branch, "DET_develop")
-			print("Update branch DET_develop merged into "+branch)
+			print("Update branch DET_develop merged into "+branch)	
 	
-	print("All git folder branches Merging complete!")
-	
+		print("All git folder branches Merging complete!")

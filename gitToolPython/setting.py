@@ -3,5 +3,3 @@
 
 # set the branches you are working on in the previous git folders 
 # feature_branches = ["feature_branch1", "feature_branch_2", "feature_branch_3"] 
-
-# new_branch = "your_new_branch"
