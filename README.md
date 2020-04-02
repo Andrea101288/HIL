@@ -3,11 +3,12 @@
 
 These are the steps of this script
 
-Switch to main branch
-Pull changes from remote
-Switch to original feature branch
-Merge from main into feature branch
-Push feature branch to remote
+-Switch to main branch
+-Pull changes from remote
+-Switch to original feature branch
+-Merge from main into feature branch
+-Push feature branch to remote
+
 run 'pip install requirements.txt'
 
 change setting.py inserting your git folders and your branches run 'python gitMergeTool.py'
