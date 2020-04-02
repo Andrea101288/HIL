@@ -21,3 +21,5 @@ Simple script just to create branches in all the folders you work.
 
 change the branch name "my_new_branch" with the name of your new branch you want to create in all your git folders in settings.py
 run 'python gitCreateBranches.py'
+
+Tool created for a company hackathon.
