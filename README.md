@@ -19,7 +19,7 @@ change setting.py inserting your git folders and your branches run 'python gitMe
 
 -- gitCreateBranches.py --
 
-Simple script just to create branches in all the folders you work.
+Simple script just to create branches in all the folders you are working on.
 
 change the branch name "my_new_branch" with the name of your new branch you want to create in all your git folders in settings.py run 'python gitCreateBranches.py'
 
