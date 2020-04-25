@@ -27,7 +27,6 @@ class Git_update:
 		# get Main branch 
 		if main_branch in repo.branches:
 			main = repo.branches[main_branch]
-			# git pull from remote main branch
 			repo.git.pull('origin', main)
 			for submodule in repo.submodules:
 				submodule.update(init=True)
@@ -36,10 +35,8 @@ class Git_update:
 			# stage a merge operation
 			repo.index.merge_tree(main, base=base)
 			# commit changes, providing links to the two parent commits
-			repo.index.commit('Merge '+main_branch+' into '+feature_branch+"'", parent_commits=(current.commit, main.commit))
-			# checkout of the new commit 	 
+			repo.index.commit('Merge '+main_branch+' into '+feature_branch+"'", parent_commits=(current.commit, main.commit))	 
 			current.checkout(force=True)
-			# download update 
 			repo.git.pull('origin', main)
 			repo.git.pull('origin', current)
 			# push the merged branch to remote, if it doesn't exist yet create it
@@ -66,3 +63,4 @@ if __name__ == "__main__":
 			print("Update branch DET_develop merged into "+branch)	
 	
 		print("All git folder branches Merging complete!")
+        

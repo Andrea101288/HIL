@@ -10,21 +10,15 @@ class Git_branches:
 
     # Method to create branches 
     def create_branches(self, git_repo, user, department, name):
-
-        # define git repo      
+      
         git_repo = git.Repo(repo)
-        # get remote repo
         origin = self.git_repo.remote()
-        # get current branch
         current = self.git_repo.branches['DET_develop']
-        # pull current repo
-        self.git_repo.git.pull('origin', current) 
-        # create branch              
+        current.checkout()
+        self.git_repo.git.pull('origin', current)              
         self.git_repo.create_head("feature/"+department+name+user)
         feature = self.git_repo.branches["feature/"+department+name+user]  
-        # push created branch in remote
         origin.push(new_branch)
-        # checkout in the feature branch 
         feature.checkout()
 
 
